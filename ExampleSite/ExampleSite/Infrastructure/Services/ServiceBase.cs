@@ -27,7 +27,7 @@ public abstract class ServiceBase {
 
     protected CacheHelper CacheHelper;
 
-    protected IQuerySurface Database;
+    protected ExampleSiteDB Database; // modify this to match what is specified in Infrastructure\Data\Settings.ttinclude => DatabaseName (minus the db)
         
     public bool IsConnected {
         get {
@@ -67,26 +67,19 @@ public abstract class ServiceBase {
     }
 
     public virtual List<T> GetData<T>(Expression<Func<T, bool>> expression) where T : class, new() {
-        List<T> data;
-        if (expression == null) {
-            data = CacheHelper != null && CacheExpiry > 0 ? CacheHelper.Get(CacheKey) as List<T> : null;
+        string newCacheKey = CacheKey;
+        if (expression != null)
+            newCacheKey = string.Format("{0}:{1}", CacheKey, expression.ToString());
 
-            if (data == null) {
-                data = GetRepository<T>().GetAll().ToList();
-                if (CacheHelper != null)
-                    CacheHelper.Add(CacheKey, data, DateTime.Now.AddSeconds(CacheExpiry));
-            }
+        List<T> data = CacheHelper != null && CacheExpiry > 0 ? CacheHelper.Get(newCacheKey) as List<T> : null;
 
-                
-        } else {
-            string newCacheKey = string.Format("{0}:{1}", CacheKey, expression.ToString());
-            data = CacheHelper != null && CacheExpiry > 0 ? CacheHelper.Get(newCacheKey) as List<T> : null;
-
-            if (data == null) {
+        if (data == null) {
+            if (expression != null) {
                 data = GetRepository<T>().Find(expression).ToList();
-                if (CacheHelper != null)
-                    CacheHelper.Add(newCacheKey, data, DateTime.Now.AddSeconds(CacheExpiry));
             }
+
+            if (CacheHelper != null)
+                CacheHelper.Add(newCacheKey, data, DateTime.Now.AddSeconds(CacheExpiry));
         }
 
         return data;
