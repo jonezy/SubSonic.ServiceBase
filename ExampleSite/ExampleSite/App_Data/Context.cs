@@ -121,14 +121,7 @@ namespace ExampleSite.Data
             return null;
         }
 			
-        public Query<UserImage> UserImages { get; set; }
-        public Query<UserProfile> UserProfiles { get; set; }
-        public Query<News> News { get; set; }
-        public Query<ProductCategory> ProductCategories { get; set; }
-        public Query<ProductImage> ProductImages { get; set; }
         public Query<User> Users { get; set; }
-        public Query<Product> Products { get; set; }
-        public Query<UserAuthorization> UserAuthorizations { get; set; }
 
 			
 
@@ -232,28 +225,14 @@ namespace ExampleSite.Data
             provider = new DbQueryProvider(this.Provider);
 
             #region ' Query Defs '
-            UserImages = new Query<UserImage>(provider);
-            UserProfiles = new Query<UserProfile>(provider);
-            News = new Query<News>(provider);
-            ProductCategories = new Query<ProductCategory>(provider);
-            ProductImages = new Query<ProductImage>(provider);
             Users = new Query<User>(provider);
-            Products = new Query<Product>(provider);
-            UserAuthorizations = new Query<UserAuthorization>(provider);
             #endregion
 
 
             #region ' Schemas '
         	if(DataProvider.Schema.Tables.Count == 0)
 			{
-            	DataProvider.Schema.Tables.Add(new UserImageTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new UserProfileTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new NewsTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new ProductCategoryTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new ProductImagesTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new UserTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new ProductTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new UserAuthorizationTable(DataProvider));
             }
             #endregion
         }

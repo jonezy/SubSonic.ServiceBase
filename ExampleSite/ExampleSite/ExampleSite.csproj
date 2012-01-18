@@ -89,8 +89,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\DBSchema.sql" />
     <Content Include="Global.asax" />
     <Content Include="Public\css\bootstrap.css" />
+    <Content Include="Public\css\layout.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-using ExampleSite.Data; // update this to match the 
+using ExampleSite.Data; // update this to match the the namespace specified in App_Data\Settings.ttinclude => Namespace
 
 using SubSonic.Query;
 using SubSonic.Repository;
 using SubSonic.Schema;
+using System.Data;
 
 namespace ExampleSite.Infrastructure {
     public abstract class ServiceBase {
         protected IQuerySurface Database;
+        public bool IsConnected {
+            get {
+                return Database.Provider.Schema.Tables.Count > 0;
+            }
+        }
 
         public ServiceBase() {
             Initialize();

@@ -4,5 +4,4 @@ SubSonic is a data access utility belt written by Rob Conery.  I've been using i
 
 # ServiceBase
 
-For most websites I build using SubSonic I use a service pattern.  That is for every database table I have a service class that represents actions that are available on that table (save, delete, getbyid etc).
-
+For most websites I build using SubSonic I use a service pattern.  That is for every domain object (User, Order) there is a corresponding service class.  That service class can interact with many tables that deal with the domain object (User => Login, UserProfile, UserDetails) 

@@ -7,13 +7,15 @@ using ExampleSite.Infrastructure;
 
 namespace ExampleSite.Controllers {
     public class HomeController : Controller {
-        //
-        // GET: /Home/
-
         public ActionResult Index() {
             UserService service = new UserService();
-            List<User> users = service.GetData<User>();
-            User user = service.Single(users.FirstOrDefault().UserID);
+            if (service.IsConnected) {
+                List<User> users = service.GetData<User>();
+                User user = null;
+                if (users.Count > 0)
+                    user = service.Single(users.FirstOrDefault().UserID);
+            }
+
             return View();
         }
 

@@ -1,6 +1,0 @@
-C:\Dev\Personal\SubSonicHelpers\src\ExampleSite\ExampleSite\bin\ExampleSite.dll
-C:\Dev\Personal\SubSonicHelpers\src\ExampleSite\ExampleSite\bin\ExampleSite.pdb
-C:\Dev\Personal\SubSonicHelpers\src\ExampleSite\ExampleSite\obj\Debug\ResolveAssemblyReference.cache
-C:\Dev\Personal\SubSonicHelpers\src\ExampleSite\ExampleSite\obj\Debug\ExampleSite.dll
-C:\Dev\Personal\SubSonicHelpers\src\ExampleSite\ExampleSite\obj\Debug\ExampleSite.pdb
-C:\Dev\Personal\SubSonicHelpers\src\ExampleSite\ExampleSite\bin\SubSonic.Core.dll
