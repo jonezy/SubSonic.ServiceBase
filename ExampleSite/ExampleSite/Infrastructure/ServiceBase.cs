@@ -31,21 +31,21 @@ namespace ExampleSite.Infrastructure {
             if (Database == null) Database = new ExampleSiteDB(); // modify this to match what is specified in App_Data\Settings.ttinclude => DatabaseName (minus the db)
         }
 
-        protected SubSonicRepository<T> GetRepository<T>(IQuerySurface db) where T : class, new() {
+        protected SubSonicRepository<T> GetRepository<T>() where T : class, new() {
             Initialize();
 
-            return new SubSonicRepository<T>(db);
+            return new SubSonicRepository<T>(Database);
         }
 
         public virtual List<T> GetData<T>() where T : class, new() {
-            return GetRepository<T>(Database).GetAll().ToList();
+            return GetRepository<T>().GetAll().ToList();
         }
 
         public virtual List<T> GetData<T>(Expression<Func<T, bool>> expression) where T : class, new() {
             if (expression == null) {
-                return GetRepository<T>(Database).GetAll().ToList();
+                return GetRepository<T>().GetAll().ToList();
             } else {
-                return GetRepository<T>(Database).Find(expression).ToList();
+                return GetRepository<T>().Find(expression).ToList();
             }
         }
 
@@ -54,7 +54,7 @@ namespace ExampleSite.Infrastructure {
             ITable tbl = null;
             try {
                 tbl = Database.Provider.FindOrCreateTable(typeof(T));
-                repository = GetRepository<T>(Database);
+                repository = GetRepository<T>();
             } catch { }
 
             if (repository == null || tbl == null)
