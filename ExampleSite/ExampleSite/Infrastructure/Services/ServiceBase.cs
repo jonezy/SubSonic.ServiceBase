@@ -105,6 +105,10 @@ public abstract class ServiceBase {
 
         return repository.Add(entity);
     }
+    
+    public virtual void Delete<T>(int id) where T: class, new() {
+        GetRepository<T>().Delete(id);
+    }
 }
 
 /// <summary>
