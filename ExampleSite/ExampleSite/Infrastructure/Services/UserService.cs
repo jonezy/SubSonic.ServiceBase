@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Linq.Expressions;
 
-using ExampleSite.Data;
+using ExampleSite.Infrastructure.Data;
 
-namespace ExampleSite.Infrastructure {
+namespace ExampleSite.Infrastructure.Services {
     public class UserService : ServiceBase {
         protected override string CacheKey {
             get { return "UserService.Users"; }

@@ -5,7 +5,7 @@ using System;
 using System.ComponentModel;
 using System.Linq;
 
-namespace ExampleSite.Data
+namespace ExampleSite.Infrastructure.Data
 {
     
     

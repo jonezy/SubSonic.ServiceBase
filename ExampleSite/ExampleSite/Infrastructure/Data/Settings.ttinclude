@@ -18,7 +18,7 @@
 
 <#+
 
-    const string Namespace = "ExampleSite.Data";
+    const string Namespace = "ExampleSite.Infrastructure.Data";
     const string ConnectionStringName = "ExampleSite";
     
     //This is the name of your database and is used in naming

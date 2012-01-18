@@ -62,20 +62,19 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App.cs" />
-    <Compile Include="App_Data\Classes.cs">
+    <Compile Include="Infrastructure\Data\Classes.cs">
       <DependentUpon>Classes.tt</DependentUpon>
       <SubType>Code</SubType>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="App_Data\Context.cs">
+    <Compile Include="Infrastructure\Data\Context.cs">
       <DependentUpon>Context.tt</DependentUpon>
       <SubType>Code</SubType>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="App_Data\Structs.cs">
+    <Compile Include="Infrastructure\Data\Structs.cs">
       <DependentUpon>Structs.tt</DependentUpon>
       <SubType>Code</SubType>
       <DesignTime>True</DesignTime>
@@ -85,8 +84,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\ServiceBase.cs" />
-    <Compile Include="Infrastructure\UserService.cs" />
+    <Compile Include="Infrastructure\Services\ServiceBase.cs" />
+    <Compile Include="Infrastructure\Services\UserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -120,17 +119,17 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App_Data\Classes.tt">
+    <None Include="Infrastructure\Data\Classes.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Classes.cs</LastGenOutput>
     </None>
-    <None Include="App_Data\Context.tt">
+    <None Include="Infrastructure\Data\Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Context.cs</LastGenOutput>
     </None>
-    <None Include="App_Data\Settings.ttinclude" />
-    <None Include="App_Data\SQLServer.ttinclude" />
-    <None Include="App_Data\Structs.tt">
+    <None Include="Infrastructure\Data\Settings.ttinclude" />
+    <None Include="Infrastructure\Data\SQLServer.ttinclude" />
+    <None Include="Infrastructure\Data\Structs.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Structs.cs</LastGenOutput>
     </None>

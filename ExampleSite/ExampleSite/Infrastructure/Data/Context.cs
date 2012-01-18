@@ -13,7 +13,7 @@ using SubSonic.Schema;
 using System.Data.Common;
 using System.Collections.Generic;
 
-namespace ExampleSite.Data
+namespace ExampleSite.Infrastructure.Data
 {
     public partial class ExampleSiteDB : IQuerySurface
     {

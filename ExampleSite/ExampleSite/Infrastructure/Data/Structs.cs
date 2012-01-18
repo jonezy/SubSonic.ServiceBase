@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using SubSonic.DataProviders;
 using System.Data;
 
-namespace ExampleSite.Data {
+namespace ExampleSite.Infrastructure.Data {
 	
         /// <summary>
         /// Table: User
