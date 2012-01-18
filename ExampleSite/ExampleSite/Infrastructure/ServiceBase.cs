@@ -8,14 +8,18 @@ using ExampleSite.Data; // update this to match the the namespace specified in A
 using SubSonic.Query;
 using SubSonic.Repository;
 using SubSonic.Schema;
-using System.Data;
 
 namespace ExampleSite.Infrastructure {
     public abstract class ServiceBase {
         protected IQuerySurface Database;
+        
         public bool IsConnected {
             get {
-                return Database.Provider.Schema.Tables.Count > 0;
+                try {
+                    return Database.Provider.Schema.Tables.Count > 0;
+                } catch {
+                    return false;
+                }
             }
         }
 
