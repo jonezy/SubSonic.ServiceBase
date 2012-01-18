@@ -4,4 +4,8 @@ SubSonic is a data access utility belt written by Rob Conery.  I've been using i
 
 # ServiceBase
 
-For most websites I build using SubSonic I use a service pattern.  That is for every domain object (User, Order) there is a corresponding service class.  That service class can interact with many tables that deal with the domain object (User => Login, UserProfile, UserDetails) 
+For most websites I build using SubSonic I use a service pattern.  That is for every domain object (User, Order) there is a corresponding service class.  That service class can interact with many tables that deal with the domain object (User => Login, UserProfile, UserDetails).  
+
+SubSonic is a fantastic utility and I love using it, but the programmer in me can't stand having that stuff in my controllers which is why I typically abstract out to a service pattern (which I find handles web scenarios very well).  ServiceBase makes that service layer incredibly thin and light and let's you just do stuff.  ServiceBase will provide caching, it implements a generic save method that will work for any SubSonic entity.
+
+# Example Site

@@ -13,6 +13,9 @@ using SubSonic.Query;
 using SubSonic.Repository;
 using SubSonic.Schema;
 
+/// <summary>
+/// Base class to be used in a Service Pattern with SubSonic providing the repositories.
+/// </summary>
 public abstract class ServiceBase {
     protected virtual double CacheExpiry {
         get { return 60; }
