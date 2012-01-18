@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+
+using ExampleSite.Data;
 using ExampleSite.Infrastructure;
 
 namespace ExampleSite.Controllers {
@@ -12,7 +12,8 @@ namespace ExampleSite.Controllers {
 
         public ActionResult Index() {
             UserService service = new UserService();
-
+            List<User> users = service.GetData<User>();
+            User user = service.Single(users.FirstOrDefault().UserID);
             return View();
         }
 

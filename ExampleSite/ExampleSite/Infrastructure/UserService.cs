@@ -1,12 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Linq.Expressions;
+
 using ExampleSite.Data;
-using SubSonic.Repository;
 
 namespace ExampleSite.Infrastructure {
     public class UserService : ServiceBase {
-
+        public User Single(int userId) {
+            Expression<Func<User,bool>> expression = u => u.UserID == userId;
+            return base.GetData<User>(expression).FirstOrDefault();
+        }
     }
 }

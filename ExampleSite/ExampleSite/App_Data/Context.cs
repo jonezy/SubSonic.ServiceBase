@@ -121,36 +121,14 @@ namespace ExampleSite.Data
             return null;
         }
 			
-        public Query<Country> Countries { get; set; }
-        public Query<Contest> Contests { get; set; }
-        public Query<City> Cities { get; set; }
-        public Query<UserProfileCategory> UserProfileCategories { get; set; }
-        public Query<DealCategory> DealCategories { get; set; }
-        public Query<UserProfileMetaCategory> UserProfileMetaCategories { get; set; }
-        public Query<StateOrRegion> StateOrRegions { get; set; }
-        public Query<UserProfileMetaEducation> UserProfileMetaEducations { get; set; }
-        public Query<DailyDealSubscriber> DailyDealSubscribers { get; set; }
-        public Query<Region> Regions { get; set; }
-        public Query<UserProfileMetaEmploymentStatus> UserProfileMetaEmploymentStatuses { get; set; }
-        public Query<UserCredit> UserCredits { get; set; }
-        public Query<UserProfileMetaIncome> UserProfileMetaIncomes { get; set; }
-        public Query<UserAuthorization> UserAuthorizations { get; set; }
-        public Query<OrderHistory> OrderHistories { get; set; }
-        public Query<Cart> Carts { get; set; }
-        public Query<Vendor> Vendors { get; set; }
+        public Query<UserImage> UserImages { get; set; }
         public Query<UserProfile> UserProfiles { get; set; }
-        public Query<UserDetail> UserDetails { get; set; }
-        public Query<DealVendor> DealVendors { get; set; }
-        public Query<DealInRegion> DealInRegions { get; set; }
-        public Query<PurchasedDeal> PurchasedDeals { get; set; }
-        public Query<CartItem> CartItems { get; set; }
-        public Query<UserProfilePlace> UserProfilePlaces { get; set; }
-        public Query<Html> Htmls { get; set; }
+        public Query<News> News { get; set; }
+        public Query<ProductCategory> ProductCategories { get; set; }
+        public Query<ProductImage> ProductImages { get; set; }
         public Query<User> Users { get; set; }
-        public Query<Deal> Deals { get; set; }
-        public Query<TigerFact> TigerFacts { get; set; }
-        public Query<UserProfileMetaRelationshipStatus> UserProfileMetaRelationshipStatuses { get; set; }
-        public Query<UserRole> UserRoles { get; set; }
+        public Query<Product> Products { get; set; }
+        public Query<UserAuthorization> UserAuthorizations { get; set; }
 
 			
 
@@ -254,72 +232,28 @@ namespace ExampleSite.Data
             provider = new DbQueryProvider(this.Provider);
 
             #region ' Query Defs '
-            Countries = new Query<Country>(provider);
-            Contests = new Query<Contest>(provider);
-            Cities = new Query<City>(provider);
-            UserProfileCategories = new Query<UserProfileCategory>(provider);
-            DealCategories = new Query<DealCategory>(provider);
-            UserProfileMetaCategories = new Query<UserProfileMetaCategory>(provider);
-            StateOrRegions = new Query<StateOrRegion>(provider);
-            UserProfileMetaEducations = new Query<UserProfileMetaEducation>(provider);
-            DailyDealSubscribers = new Query<DailyDealSubscriber>(provider);
-            Regions = new Query<Region>(provider);
-            UserProfileMetaEmploymentStatuses = new Query<UserProfileMetaEmploymentStatus>(provider);
-            UserCredits = new Query<UserCredit>(provider);
-            UserProfileMetaIncomes = new Query<UserProfileMetaIncome>(provider);
-            UserAuthorizations = new Query<UserAuthorization>(provider);
-            OrderHistories = new Query<OrderHistory>(provider);
-            Carts = new Query<Cart>(provider);
-            Vendors = new Query<Vendor>(provider);
+            UserImages = new Query<UserImage>(provider);
             UserProfiles = new Query<UserProfile>(provider);
-            UserDetails = new Query<UserDetail>(provider);
-            DealVendors = new Query<DealVendor>(provider);
-            DealInRegions = new Query<DealInRegion>(provider);
-            PurchasedDeals = new Query<PurchasedDeal>(provider);
-            CartItems = new Query<CartItem>(provider);
-            UserProfilePlaces = new Query<UserProfilePlace>(provider);
-            Htmls = new Query<Html>(provider);
+            News = new Query<News>(provider);
+            ProductCategories = new Query<ProductCategory>(provider);
+            ProductImages = new Query<ProductImage>(provider);
             Users = new Query<User>(provider);
-            Deals = new Query<Deal>(provider);
-            TigerFacts = new Query<TigerFact>(provider);
-            UserProfileMetaRelationshipStatuses = new Query<UserProfileMetaRelationshipStatus>(provider);
-            UserRoles = new Query<UserRole>(provider);
+            Products = new Query<Product>(provider);
+            UserAuthorizations = new Query<UserAuthorization>(provider);
             #endregion
 
 
             #region ' Schemas '
         	if(DataProvider.Schema.Tables.Count == 0)
 			{
-            	DataProvider.Schema.Tables.Add(new CountryTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new ContestTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new CityTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new UserProfileCategoriesTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new DealCategoryTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new UserProfileMetaCategoryTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new StateOrRegionTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new UserProfileMetaEducationTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new DailyDealSubscriberTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new RegionTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new UserProfileMetaEmploymentStatusTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new UserCreditTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new UserProfileMetaIncomeTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new UserAuthorizationTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new OrderHistoryTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new CartTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new VendorTable(DataProvider));
+            	DataProvider.Schema.Tables.Add(new UserImageTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new UserProfileTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new UserDetailTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new DealVendorTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new DealInRegionTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new PurchasedDealsTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new CartItemTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new UserProfilePlacesTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new HtmlTable(DataProvider));
+            	DataProvider.Schema.Tables.Add(new NewsTable(DataProvider));
+            	DataProvider.Schema.Tables.Add(new ProductCategoryTable(DataProvider));
+            	DataProvider.Schema.Tables.Add(new ProductImagesTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new UserTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new DealTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new TigerFactTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new UserProfileMetaRelationshipStatusTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new UserRoleTable(DataProvider));
+            	DataProvider.Schema.Tables.Add(new ProductTable(DataProvider));
+            	DataProvider.Schema.Tables.Add(new UserAuthorizationTable(DataProvider));
             }
             #endregion
         }
