@@ -62,6 +62,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App.cs" />
     <Compile Include="App_Data\Classes.cs">
       <DependentUpon>Classes.tt</DependentUpon>
       <SubType>Code</SubType>
