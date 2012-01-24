@@ -8,6 +8,16 @@ For most websites I build using SubSonic I use a service pattern.  That is for e
 
 SubSonic is a fantastic utility and I love using it, but the programmer in me can't stand having that stuff in my controllers which is why I typically abstract out to a service pattern (which I find handles web scenarios very well).  ServiceBase makes that service layer incredibly thin and light and let's you just do stuff.  ServiceBase will provide caching, it implements a generic save method that will work for any SubSonic entity.
 
+## How to use ServiceBase
+
+- Generate your Data Access layer with Subsonic
+- Register your Subsonic DB(s).  I do this in Global.asax.cs
+- Create a service class that inherits from ServiceBase.
+- Call GetData<T,U>() from your service class OR from controllers to get data (ex: User user = service.GetData<User, ExampleDB>(u => u.IsActive == true);)
+ - You can have entire service classes that contain nothing and simple allow you to access GetData and Save in service base.
+ - Or you can create methods in your service class that call GetData and apply domain logic, it's up to you.
+
+
 # Example Site
 
 ## Structure
