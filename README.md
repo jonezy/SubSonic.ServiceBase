@@ -8,6 +8,12 @@ For most websites I build using SubSonic I use a service pattern.  That is for e
 
 SubSonic is a fantastic utility and I love using it, but the programmer in me can't stand having that stuff in my controllers which is why I typically abstract out to a service pattern (which I find handles web scenarios very well).  ServiceBase makes that service layer incredibly thin and light and let's you just do stuff.  ServiceBase will provide caching, it implements a generic save method that will work for any SubSonic entity.
 
+## Features
+
+- Built in caching layer
+- Supports multiple Subsonic db's
+ 
+
 ## How to use ServiceBase
 
 - Generate your Data Access layer with Subsonic
