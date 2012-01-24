@@ -9,7 +9,6 @@ using ExampleSite.Infrastructure.Services;
 namespace ExampleSite.Controllers {
     public class HomeController : Controller {
         UserService service;
-
         
         public HomeController() {
             if (service == null) service = new UserService();
