@@ -86,6 +86,8 @@
     </Compile>
     <Compile Include="Infrastructure\Services\ServiceBase.cs" />
     <Compile Include="Infrastructure\Services\UserService.cs" />
+    <Compile Include="Models\IndexViewModel.cs" />
+    <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -108,7 +110,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Public\img\" />
     <Folder Include="Public\js\" />
   </ItemGroup>
