@@ -7,11 +7,13 @@ using System.Linq.Expressions;
 using System.Web;
 using System.Web.Caching;
 
-using ExampleSite.Infrastructure.Data; // update this to match the the namespace specified in Infrastructure\Data\Settings.ttinclude => Namespace
+
+// update this to match the the namespace specified in Infrastructure\Data\Settings.ttinclude => Namespace
 
 using SubSonic.Query;
 using SubSonic.Repository;
 using SubSonic.Schema;
+using DatabaseLocator;
 
 /// <summary>
 /// Base class to be used in a Service Pattern with SubSonic providing the repositories.
@@ -27,10 +29,15 @@ public abstract class ServiceBase {
 
     protected CacheHelper CacheHelper;
 
-    protected ExampleSiteDB Database; // modify this to match what is specified in Infrastructure\Data\Settings.ttinclude => DatabaseName (minus the db)
-        
-    public bool IsConnected {
-        get {
+    public ServiceBase() {
+        if (App.CachingEnabled) {
+            if (CacheHelper == null) CacheHelper = new CacheHelper(HttpContext.Current.Cache);
+        }
+    }
+
+    public bool IsConnected<U>() where U : IQuerySurface {
+        IQuerySurface Database = Locator.Instance.GetEndPoint<U>();
+        if (Database != null) {
             SqlConnection connection = new SqlConnection(Database.Provider.ConnectionString);
             try {
                 connection.Open();
@@ -42,55 +49,43 @@ public abstract class ServiceBase {
                 connection.Dispose();
             }
         }
+
+        return false;
+
     }
 
-    public ServiceBase() {
-        Initialize();
-
-        if (App.CachingEnabled) {
-            if (CacheHelper == null) CacheHelper = new CacheHelper(HttpContext.Current.Cache);
-        }
+    public virtual List<T> GetData<T, U>() where T : class, new() where U : IQuerySurface {
+        return GetRepository<T, U>().GetAll().ToList();
     }
 
-    private void Initialize() {
-        if (Database == null) Database = new ExampleSiteDB(); // modify this to match what is specified in Infrastructure\Data\Settings.ttinclude => DatabaseName (minus the db)
-    }
-
-    protected SubSonicRepository<T> GetRepository<T>() where T : class, new() {
-        Initialize();
-
-        return new SubSonicRepository<T>(Database);
-    }
-
-    public virtual List<T> GetData<T>() where T : class, new() {
-        return GetRepository<T>().GetAll().ToList();
-    }
-
-    public virtual List<T> GetData<T>(Expression<Func<T, bool>> expression) where T : class, new() {
+    public virtual List<T> GetData<T, U>(Expression<Func<T, bool>> expression) where T : class, new() where U : IQuerySurface {
         string newCacheKey = CacheKey;
-        if (expression != null)
+        if(expression != null)
             newCacheKey = string.Format("{0}:{1}", CacheKey, expression.ToString());
-
+        
         List<T> data = CacheHelper != null && CacheExpiry > 0 ? CacheHelper.Get(newCacheKey) as List<T> : null;
-
         if (data == null) {
+            SubSonicRepository<T> repository = GetRepository<T, U>();
+            data = repository.GetAll().ToList();
             if (expression != null) {
-                data = GetRepository<T>().Find(expression).ToList();
+                data = repository.Find(expression).ToList();
             }
 
             if (CacheHelper != null)
                 CacheHelper.Add(newCacheKey, data, DateTime.Now.AddSeconds(CacheExpiry));
         }
-
+        
         return data;
     }
 
-    public virtual object Save<T>(T entity) where T : class, new() {
+    public virtual object Save<T, U>(T entity) where T : class, new()  where U : IQuerySurface {
         IRepository<T> repository = null;
         ITable tbl = null;
+        IQuerySurface database = Locator.Instance.GetEndPoint<U>();
+
         try {
-            tbl = Database.Provider.FindOrCreateTable(typeof(T));
-            repository = GetRepository<T>();
+            tbl = database.Provider.FindOrCreateTable(typeof(T)); // TODO: this should be FindTable
+            repository = GetRepository<T, U>();
         } catch { }
 
         if (repository == null || tbl == null)
@@ -105,9 +100,11 @@ public abstract class ServiceBase {
 
         return repository.Add(entity);
     }
-    
-    public virtual void Delete<T>(int id) where T: class, new() {
-        GetRepository<T>().Delete(id);
+
+    private SubSonicRepository<T> GetRepository<T, U>() where T : class, new() where U : IQuerySurface {
+        IQuerySurface db = Locator.Instance.GetEndPoint<U>();
+
+        return new SubSonicRepository<T>(db);
     }
 }
 

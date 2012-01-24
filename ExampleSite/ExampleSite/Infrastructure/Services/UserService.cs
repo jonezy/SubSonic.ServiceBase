@@ -11,7 +11,7 @@ namespace ExampleSite.Infrastructure.Services {
         }   
 
         public User Single(int userId) {
-            return base.GetData<User>(u => u.UserID == userId).FirstOrDefault();
+            return base.GetData<User, ExampleSiteDB>(u => u.UserID == userId).FirstOrDefault();
         }
     }
 }

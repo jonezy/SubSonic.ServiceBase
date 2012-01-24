@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
+
+using DatabaseLocator;
+
+using ExampleSite.Infrastructure.Data;
 
 namespace ExampleSite {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
@@ -25,11 +25,16 @@ namespace ExampleSite {
 
         }
 
+        public static void RegisterEndPoints(DatabaseCollection endPoints) {
+            endPoints.MapStorageEndPoint(typeof(ExampleSiteDB), typeof(ExampleSiteDB));
+        }
+
         protected void Application_Start() {
             AreaRegistration.RegisterAllAreas();
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+            RegisterEndPoints(DatabaseTable.Databases);
         }
     }
 }
