@@ -18,7 +18,7 @@ namespace ExampleSite.Controllers {
         }
 
         public ActionResult Index() {
-            List<User> users = service.GetData<User, ExampleSiteDB>();
+            List<User> users = service.GetData<User, ExampleSiteDB>(u=>u.IsActive == true);
             User user = null;
             if (users.Count > 0)
                 user = service.Single(users.FirstOrDefault().UserID);

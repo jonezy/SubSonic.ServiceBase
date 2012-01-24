@@ -7,13 +7,11 @@ using System.Linq.Expressions;
 using System.Web;
 using System.Web.Caching;
 
-
-// update this to match the the namespace specified in Infrastructure\Data\Settings.ttinclude => Namespace
+using DatabaseLocator;
 
 using SubSonic.Query;
 using SubSonic.Repository;
 using SubSonic.Schema;
-using DatabaseLocator;
 
 /// <summary>
 /// Base class to be used in a Service Pattern with SubSonic providing the repositories.
@@ -31,7 +29,7 @@ public abstract class ServiceBase {
 
     public ServiceBase() {
         if (App.CachingEnabled) {
-            if (CacheHelper == null) CacheHelper = new CacheHelper(HttpContext.Current.Cache);
+            if (CacheHelper == null) CacheHelper = new CacheHelper(HttpRuntime.Cache);
         }
     }
 
@@ -66,9 +64,10 @@ public abstract class ServiceBase {
         List<T> data = CacheHelper != null && CacheExpiry > 0 ? CacheHelper.Get(newCacheKey) as List<T> : null;
         if (data == null) {
             SubSonicRepository<T> repository = GetRepository<T, U>();
-            data = repository.GetAll().ToList();
             if (expression != null) {
                 data = repository.Find(expression).ToList();
+            } else {
+                data = repository.GetAll().ToList();
             }
 
             if (CacheHelper != null)
