@@ -1,8 +1,6 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-using DatabaseLocator;
-
 using ExampleSite.Infrastructure.Data;
 
 namespace ExampleSite {
@@ -25,7 +23,7 @@ namespace ExampleSite {
 
         }
 
-        public static void RegisterEndPoints(DatabaseCollection endPoints) {
+        public static void RegisterEndPoints(DatabaseEndPointCollection endPoints) {
             endPoints.MapStorageEndPoint(typeof(ExampleSiteDB), typeof(ExampleSiteDB));
         }
 
@@ -34,7 +32,12 @@ namespace ExampleSite {
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
-            RegisterEndPoints(DatabaseTable.Databases);
+
+            // you can do this if you have multiple endpoints to make things cleaner.
+            //RegisterEndPoints(DatabaseTable.Databases);
+
+            // if you just have one end point, you can do this.
+            DatabaseEndPointTable.Databases.MapStorageEndPoint(typeof(ExampleSiteDB), typeof(ExampleSiteDB));
         }
     }
 }

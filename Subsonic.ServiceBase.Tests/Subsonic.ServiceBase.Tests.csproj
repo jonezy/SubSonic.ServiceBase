@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{97DAB1B8-9EEF-40A5-963E-9C37F0A553AA}</ProjectGuid>
+    <ProjectGuid>{DB07CF63-D0CD-4A68-AF71-F80B0C0BCD9A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ExampleSite.Tests</RootNamespace>
-    <AssemblyName>ExampleSite.Tests</AssemblyName>
+    <RootNamespace>Subsonic.ServiceBase.Tests</RootNamespace>
+    <AssemblyName>Subsonic.ServiceBase.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,18 +40,8 @@
     <Reference Include="pnunit.framework">
       <HintPath>..\packages\NUnit.2.5.10.11092\lib\pnunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="Rhino.Mocks">
-      <HintPath>..\packages\RhinoMocks.3.6\lib\Rhino.Mocks.dll</HintPath>
-    </Reference>
-    <Reference Include="SubSonic.Core, Version=3.0.0.3, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SubSonic.3.0.0.4\lib\SubSonic.Core.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\System.Web.Mvc.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,20 +49,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HomeControllerTests.cs" />
+    <Compile Include="DatabaseLocatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\SubSonic.ServiceBAse\SubSonic.ServiceBase.csproj">
+    <ProjectReference Include="..\SubSonic.ServiceBAse\SubSonic.ServiceBase.csproj">
       <Project>{29216F68-DF3E-45C9-86A4-2FF2162F2892}</Project>
       <Name>SubSonic.ServiceBase</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ExampleSite\ExampleSite.csproj">
-      <Project>{1C223118-11F1-4499-8A81-60B6FA5D374D}</Project>
-      <Name>ExampleSite</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

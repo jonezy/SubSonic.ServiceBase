@@ -7,8 +7,6 @@ using System.Linq.Expressions;
 using System.Web;
 using System.Web.Caching;
 
-using DatabaseLocator;
-
 using SubSonic.Query;
 using SubSonic.Repository;
 using SubSonic.Schema;

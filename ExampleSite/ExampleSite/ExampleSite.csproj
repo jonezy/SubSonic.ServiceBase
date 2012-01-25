@@ -34,7 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SubSonic.Core">
+    <Reference Include="SubSonic.Core, Version=3.0.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\SubSonic.3.0.0.4\lib\SubSonic.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.Linq" />
@@ -84,7 +85,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\Services\ServiceBase.cs" />
     <Compile Include="Infrastructure\Services\UserService.cs" />
     <Compile Include="Models\IndexViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
@@ -139,9 +139,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DatabaseLocator\DatabaseLocator.csproj">
-      <Project>{27E83145-EAA3-4979-8E8B-FECF74487CF2}</Project>
-      <Name>DatabaseLocator</Name>
+    <ProjectReference Include="..\..\SubSonic.ServiceBAse\SubSonic.ServiceBase.csproj">
+      <Project>{29216F68-DF3E-45C9-86A4-2FF2162F2892}</Project>
+      <Name>SubSonic.ServiceBase</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
