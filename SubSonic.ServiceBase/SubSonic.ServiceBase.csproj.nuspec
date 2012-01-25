@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>SubSonic.ServiceBase</id>
+    <version>1.0</version>
+    <authors>jonezy</authors>
+    <owners>jonezy</owners>
+    <projectUrl>http://github.com/jonezy/SubSonic.ServiceBase</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Subsonic.ServiceBase makes accessing your data with SubSonic event faster!</description>
+    <tags>SubSonic DataAccess</tags>
+	<references>
+	  <reference file="lib/SubSonic.ServiceBase.dll" />
+	</references>	
+	<dependencies>
+	  <dependency id="SubSonic" version="3.0.0.4" />
+	</dependencies>
+  </metadata>
+</package>

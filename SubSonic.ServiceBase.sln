@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleSite", "ExampleSite\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleSite.Tests", "ExampleSite\ExampleSite.Tests\ExampleSite.Tests.csproj", "{97DAB1B8-9EEF-40A5-963E-9C37F0A553AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subsonic.ServiceBase.Tests", "Subsonic.ServiceBase.Tests\Subsonic.ServiceBase.Tests.csproj", "{DB07CF63-D0CD-4A68-AF71-F80B0C0BCD9A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubSonic.ServiceBase.Tests", "Subsonic.ServiceBase.Tests\SubSonic.ServiceBase.Tests.csproj", "{DB07CF63-D0CD-4A68-AF71-F80B0C0BCD9A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

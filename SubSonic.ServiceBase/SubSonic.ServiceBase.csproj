@@ -8,8 +8,8 @@
     <ProjectGuid>{29216F68-DF3E-45C9-86A4-2FF2162F2892}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SubSonic.ServiceBAse</RootNamespace>
-    <AssemblyName>SubSonic.ServiceBAse</AssemblyName>
+    <RootNamespace>SubSonic.ServiceBase</RootNamespace>
+    <AssemblyName>SubSonic.ServiceBase</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
