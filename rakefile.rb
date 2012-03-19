@@ -12,7 +12,7 @@ CLEAN.include("*.cache", "*.xml", "*.suo", "**/obj", "**/bin")
 # CONFIGURE THIS STUFF ONLY
 ##########################################
 $PROJECT_NAME = "SubSonic.ServiceBase" # this should reflect the name of your project
-$VERSION_NUMBER = "0.2" # update this before running rake nuget:pack
+$VERSION_NUMBER = "0.3" # update this before running rake nuget:pack
 $NUGET_OUTPUT_DIR = File.join(File.dirname(__FILE__), "/nuget") 
 task :default => :pack
 

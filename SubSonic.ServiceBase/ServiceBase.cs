@@ -98,6 +98,11 @@ public abstract class ServiceBase {
         return repository.Add(entity);
     }
 
+    public virtual int Delete<T, U>(int id) where T : class, new() where U : IQuerySurface {
+        IRepository<T> repository = GetRepository<T, U>();
+        return repository.Delete(id);
+    }
+
     private SubSonicRepository<T> GetRepository<T, U>() where T : class, new() where U : IQuerySurface {
         IQuerySurface db = Locator.Instance.GetEndPoint<U>();
 

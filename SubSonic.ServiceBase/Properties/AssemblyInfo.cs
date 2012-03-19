@@ -4,5 +4,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("SubSonic.ServiceBase makes accessing your data with SubSonic even faster.")]
 [assembly: AssemblyCompany("SubSonic.ServiceBase")]
 [assembly: AssemblyProduct("SubSonic.ServiceBase")]
-[assembly: AssemblyVersion("0.2")]
+[assembly: AssemblyVersion("0.3")]
 
